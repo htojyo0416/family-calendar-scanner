@@ -10,6 +10,7 @@
   --rose: #be3455;
   --blue: #3562a6;
   --gold: #9a6a13;
+  --violet: #7c3f8c;
   font-family: "Yu Gothic", "Hiragino Sans", Meiryo, system-ui, sans-serif;
 }
 
@@ -111,7 +112,7 @@ h2 {
 
 .profile-switch {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin: 20px 0;
 }
@@ -280,6 +281,10 @@ textarea {
   border-left-color: var(--gold);
 }
 
+.event-card[data-child="妻"] {
+  border-left-color: var(--violet);
+}
+
 .event-card .wide {
   grid-column: 1 / -1;
 }
@@ -313,7 +318,8 @@ textarea {
   }
 
   .form-grid,
-  .event-card {
+  .event-card,
+  .profile-switch {
     grid-template-columns: 1fr 1fr;
   }
 
