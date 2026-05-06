@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="予定化">
+  <rect width="512" height="512" rx="96" fill="#0f766e"/>
+  <rect x="98" y="118" width="316" height="286" rx="28" fill="#fff"/>
+  <path d="M146 92v76M366 92v76" stroke="#1f2937" stroke-width="28" stroke-linecap="round"/>
+  <path d="M128 214h256" stroke="#d7dde7" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="166" cy="270" r="20" fill="#be3455"/>
+  <circle cx="256" cy="270" r="20" fill="#3562a6"/>
+  <circle cx="346" cy="270" r="20" fill="#0f766e"/>
+  <path d="M156 344h128" stroke="#1f2937" stroke-width="22" stroke-linecap="round"/>
+</svg>

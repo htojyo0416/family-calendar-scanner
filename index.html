@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="description" content="手書きカレンダーをスマホで予定化する家庭用プロトタイプ" />
+    <title>手書きカレンダー予定化</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="capture-panel">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">Family schedule scanner</p>
+            <h1>手書きカレンダーを予定にする</h1>
+          </div>
+          <span class="status-pill" id="statusPill">未読取</span>
+        </div>
+
+        <div class="profile-switch" role="radiogroup" aria-label="対象">
+          <label>
+            <input type="radio" name="profile" value="daughter" checked />
+            <span>長女</span>
+          </label>
+          <label>
+            <input type="radio" name="profile" value="son" />
+            <span>長男</span>
+          </label>
+        </div>
+
+        <label class="drop-zone" for="calendarImage">
+          <input id="calendarImage" type="file" accept="image/*" capture="environment" />
+          <span class="camera-icon">+</span>
+          <strong>カレンダーを撮影または選択</strong>
+          <small>月間プリント、学校予定表、習い事表の写真を使えます</small>
+        </label>
+
+        <figure class="preview-frame" id="previewFrame" hidden>
+          <img id="previewImage" alt="読み取るカレンダー画像" />
+        </figure>
+
+        <div class="read-panel">
+          <label for="ocrText">読み取り結果またはメモ</label>
+          <textarea id="ocrText" rows="8" placeholder="例: 5/12 遠足 9:00-14:00&#10;5/14 ピアノ 16:30-17:00&#10;5/21 保護者会 15:00"></textarea>
+          <div class="button-row">
+            <button id="loadSample" type="button">サンプル入力</button>
+            <button id="parseText" type="button" class="primary">予定に変換</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="schedule-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Review</p>
+            <h2>確認してカレンダーへ</h2>
+          </div>
+          <button id="addEvent" type="button">予定追加</button>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            基準年
+            <input id="baseYear" type="number" min="2020" max="2100" value="2026" />
+          </label>
+          <label>
+            既定の時間
+            <input id="defaultTime" type="time" value="09:00" />
+          </label>
+          <label>
+            既定の長さ
+            <select id="defaultDuration">
+              <option value="30">30分</option>
+              <option value="60" selected>1時間</option>
+              <option value="120">2時間</option>
+              <option value="360">半日</option>
+              <option value="1440">終日</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="event-list" id="eventList" aria-live="polite"></div>
+
+        <div class="export-bar">
+          <div>
+            <strong id="eventCount">0件</strong>
+            <span>内容を確認してから書き出し</span>
+          </div>
+          <button id="downloadIcs" type="button" class="primary">ICSを書き出す</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="eventTemplate">
+      <article class="event-card">
+        <button class="remove" type="button" aria-label="予定を削除">×</button>
+        <label>
+          日付
+          <input data-field="date" type="date" />
+        </label>
+        <label>
+          予定名
+          <input data-field="title" type="text" />
+        </label>
+        <label>
+          開始
+          <input data-field="start" type="time" />
+        </label>
+        <label>
+          終了
+          <input data-field="end" type="time" />
+        </label>
+        <label>
+          対象
+          <select data-field="child">
+            <option value="長女">長女</option>
+            <option value="長男">長男</option>
+          </select>
+        </label>
+        <label class="wide">
+          メモ
+          <input data-field="memo" type="text" />
+        </label>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
