@@ -9,6 +9,7 @@
   --accent-strong: #115e59;
   --rose: #be3455;
   --blue: #3562a6;
+  --gold: #9a6a13;
   font-family: "Yu Gothic", "Hiragino Sans", Meiryo, system-ui, sans-serif;
 }
 
@@ -110,7 +111,7 @@ h2 {
 
 .profile-switch {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   margin: 20px 0;
 }
@@ -273,6 +274,10 @@ textarea {
 
 .event-card[data-child="長男"] {
   border-left-color: var(--blue);
+}
+
+.event-card[data-child="自分"] {
+  border-left-color: var(--gold);
 }
 
 .event-card .wide {
