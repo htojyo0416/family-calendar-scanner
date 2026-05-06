@@ -18,6 +18,7 @@ const previewFrame = document.querySelector("#previewFrame");
 const previewImage = document.querySelector("#previewImage");
 const statusPill = document.querySelector("#statusPill");
 const ocrText = document.querySelector("#ocrText");
+const ocrNote = document.querySelector("#ocrNote");
 const eventList = document.querySelector("#eventList");
 const eventTemplate = document.querySelector("#eventTemplate");
 const eventCount = document.querySelector("#eventCount");
@@ -37,6 +38,11 @@ calendarImage.addEventListener("change", () => {
   previewImage.src = URL.createObjectURL(file);
   previewFrame.hidden = false;
   statusPill.textContent = "画像取込済";
+  ocrNote.textContent =
+    "写真を取り込みました。今の版は自動読取が未接続なので、写真を見ながら予定を入力してください。";
+  if (!ocrText.value.trim()) {
+    ocrText.placeholder = "例: 5/12 遠足 9:00-14:00\n5/14 ピアノ 16:30-17:00\n5/21 保護者会 15:00";
+  }
 });
 
 document.querySelector("#loadSample").addEventListener("click", () => {

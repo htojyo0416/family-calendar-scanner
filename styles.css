@@ -198,6 +198,17 @@ h2 {
   margin-top: 18px;
 }
 
+.helper-note {
+  margin: 0;
+  border-left: 4px solid var(--accent);
+  background: #eefaf8;
+  border-radius: 8px;
+  color: var(--accent-strong);
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 10px 12px;
+}
+
 label {
   display: grid;
   gap: 6px;
